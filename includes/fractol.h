@@ -26,6 +26,8 @@
 
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
+# include "../minilibx_macos/mlx.h"
+# include "../minilibx_macos\ sierra/mlx.h"
 
 # include <math.h>
 # include <fcntl.h>

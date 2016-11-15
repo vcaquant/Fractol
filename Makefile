@@ -16,15 +16,20 @@ SRC = 			sources/fractol.c
 
 OBJ = 			fractol.o
 
-HEADER =		./libft/libft.h
+HEADER =		./libft/libft.h\
 
 FINDLIBFT =		-Llibft
 
-PT_A =			./libft/libft.a
+PT_A =			./minilibx_macos/libmlx.a \
+			./libft/libft.a
 
 FLAGS = 		-Wall -Wextra -Werror -g
 
+LIBX_FS =		-framework OpenGL -framework AppKit
+
 LIBFT_DIR =		./libft/
+
+LIBX_DIR =		./minilibx_macos/
 
 CC = 			gcc
 
@@ -38,6 +43,7 @@ comp_oth:
 $(NAME):
 		@clear
 		@$(CC) $(FLAGS) -c $(SRC) $(HEADER)
+		@$(CC) -o $(NAME) $(OBJ) $(PT_A) $(LIBX_FS)
 		@echo "\033[0;32m✔︎ Compilation Done\033[0m"
 
 clean:
@@ -45,6 +51,7 @@ clean:
 		@rm -f $(OBJ)
 		@rm -f fdf.h.gch
 		@make clean -C $(LIBFT_DIR)
+		@make clean -C $(LIBX_DIR)
 
 fclean:	clean
 		@clear

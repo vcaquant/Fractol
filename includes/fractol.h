@@ -13,6 +13,9 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# define W_X		1200
+# define W_Y		700
+
 # define BLACK		0x000000
 # define WHI		0xFFFFFF
 # define AZUR		0x74D0F1
@@ -50,5 +53,14 @@ typedef struct	s_env
 int				ft_init_struct(t_env **env, char **av);
 
 int				ft_error(int ac);
+
+void			too_much_help(t_env *env);
+int				aff_key(int keycode, t_env *env);
+
+int				aff_help_exit(int keycode, t_env *env);
+void			write_command(t_env *env);
+void			write_title1(t_env *env);
+void			write_title2(t_env *env);
+void			aff_help(t_env *env);
 
 #endif

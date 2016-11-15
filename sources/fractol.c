@@ -29,5 +29,11 @@ int     main(int ac, char **av)
 {
     t_env   *env;
 
-    
+    if (!ft_init_struct(&env, av))
+		return (-1);
+    env->mlx = mlx_init();
+    env->win = mlx_new_window(env->mlx, W_X, W_Y, "Fract_ol");
+    mlx_hook(env->win, 2, 0, aff_key, env);
+	mlx_loop(env->mlx);
+	return (0);
 }

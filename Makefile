@@ -12,11 +12,13 @@
 
 NAME = 			fractol
 
-SRC = 			sources/fractol.c
+SRC = 			sources/fractol.c \
+				sources/ft_code.c
 
-OBJ = 			fractol.o
+OBJ = 			fractol.o \
+				ft_code.o
 
-HEADER =		./libft/libft.h\
+HEADER =		./libft/libft.h \
 
 FINDLIBFT =		-Llibft
 

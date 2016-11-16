@@ -13,10 +13,12 @@
 NAME = 			fractol
 
 SRC = 			sources/fractol.c \
-				sources/ft_code.c
+				sources/ft_code.c \
+				sources/ft_help.c
 
 OBJ = 			fractol.o \
-				ft_code.o
+				ft_code.o \
+				ft_help.o
 
 HEADER =		./libft/libft.h \
 

@@ -30,7 +30,7 @@
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
 # include "../minilibx_macos/mlx.h"
-# include "../minilibx_macos\ sierra/mlx.h"
+//# include "../minilibx_macos sierra/mlx.h"
 
 # include <math.h>
 # include <fcntl.h>
@@ -45,14 +45,35 @@ typedef struct	s_env
 	void	*mlx;
 	void	*win;
 	void	*s_win;
-	int		**tab;
-	int		ret;
-	int		fd;
+
+	double	x1;
+	double	x2;
+	double	y1;
+	double	y2;
+	double	img_x;
+	double	img_y;
+
+	double	c_r;
+	double	c_i;
+	double	z_r;
+	double	z_i;
+
+	int		zoom;
+	int		it_max;
+
+	t_img	*img;
 }				t_env;
 
-int				ft_init_struct(t_env **env, char **av);
+typedef struct	s_img
+{
+	void 	img_ptr;
+	void 	bits_img;
+	void 	bpp;
+	int		size_line;
+	int		end;
+}				t_img;
 
-int				ft_error(int ac);
+int				ft_init_struct(t_env **env);
 
 void			too_much_help(t_env *env);
 int				aff_key(int keycode, t_env *env);
@@ -62,5 +83,7 @@ void			write_command(t_env *env);
 void			write_title1(t_env *env);
 void			write_title2(t_env *env);
 void			aff_help(t_env *env);
+
+void 			Mandelbrot(t_env *env);
 
 #endif

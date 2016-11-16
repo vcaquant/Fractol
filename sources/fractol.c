@@ -85,6 +85,48 @@ void 	Mandelbrot(t_env *env)
 	}
 }
 
+void 	Julia(t_env *env)
+{
+	int		x;
+	int		y;
+	int		i;
+	double		tmp;
+
+	env->x1 = -1;
+	env->x2 = 1;
+	env->y1 = -1.2;
+	env->y2 = 1.2;
+	env->zoom = 100;
+	env->it_max = 150;
+	env->img_x = (x2 - x1) * zoom;
+	env->img_y = (y2 - y1) * zoom;
+
+	x = 0;
+	while (x < img_x)
+	{
+		y = 0;
+		while (y < img_y)
+		{
+			env->c_r = 0.285;
+			env->c_i = 0.01;
+			env->z_r = x / env->zoom + env->x1;
+			env->z_i = y / env->zoom + env->y1;
+			i = 0;
+			while ((env->z_r * env->z_r + env->z_i * env->z_i) < 4 && i < env->it_max)
+			{
+				tmp = env->z_r;
+				env->z_r = env->z_r * env->z_r - env->z_i * env->z_i + env->c_r;
+				env->z_i = 2 * env->z_i * tmp + env->c_i;
+				i++;
+			}
+			if (i == env->it_max)
+				ft_pixel(env, x, y);
+			else
+				ft_pixel2(env, x, y);
+		}
+	}
+}
+
 int     main(void)
 {
     t_env   *env;

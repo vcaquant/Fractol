@@ -22,6 +22,26 @@ int		ft_init_struct(t_env **env)
 	return (1);
 }
 
+void	ft_pixel2(t_env *env, int x, int y)
+{
+	if (x > 0 && x < W_X && y > 0 && y < W_Y)
+	{
+		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = 185;
+		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = 128;
+		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = 41;
+	}
+}
+
+void	ft_pixel(t_env *env, int x, int y)
+{
+	if (x > 0 && x < W_X && y > 0 && y < W_Y)
+	{
+		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = 241;
+		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = 240;
+		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = 236;
+	}
+}
+
 void 	Mandelbrot(t_env *env)
 {
 	int		x;
@@ -56,7 +76,9 @@ void 	Mandelbrot(t_env *env)
 				i++;
 			}
 			if (i == env->it_max)
-				mlx_pixel_put(env->mlx, env->win, x, y, WHI);
+				ft_pixel(env, x, y);
+			else
+				ft_pixel2(env, x, y);
 			y++;
 		}
 		x++;
@@ -75,6 +97,8 @@ int     main(void)
 	env->img->bits_img = mlx_get_data_addr(env->img->ptr_img, &(env->img->bpp),
 			&(env->img->size_line), &(env->img->end));
 	Mandelbrot(env);
+	mlx_put_image_to_window(env->mlx, env->win,
+		env->img->ptr_img, 0, 0);
     mlx_hook(env->win, 2, 0, aff_key, env);
 	mlx_loop(env->mlx);
 	return (0);

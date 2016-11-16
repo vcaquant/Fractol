@@ -30,7 +30,7 @@
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
 # include "../minilibx_macos/mlx.h"
-//# include "../minilibx_macos sierra/mlx.h"
+# include "../minilibx_macos sierra/mlx.h"
 
 # include <math.h>
 # include <fcntl.h>
@@ -39,6 +39,15 @@
 # include <unistd.h>
 # include <sys/uio.h>
 # include <sys/types.h>
+
+typedef struct	s_img
+{
+	void		*ptr_img;
+	char		*bits_img;
+	int			size_line;
+	int			bpp;
+	int			end;
+}				t_img;
 
 typedef struct	s_env
 {
@@ -62,16 +71,10 @@ typedef struct	s_env
 	int		it_max;
 
 	t_img	*img;
+	double	r;
+	double	g;
+	double	b;
 }				t_env;
-
-typedef struct	s_img
-{
-	void 	img_ptr;
-	void 	bits_img;
-	void 	bpp;
-	int		size_line;
-	int		end;
-}				t_img;
 
 int				ft_init_struct(t_env **env);
 

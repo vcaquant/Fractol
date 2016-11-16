@@ -56,11 +56,13 @@ clean:
 		@rm -f fdf.h.gch
 		@make clean -C $(LIBFT_DIR)
 		@make clean -C $(LIBX_DIR)
+		@echo "\033[0;31m✔︎ Cleaning Done\033[0m"
 
 fclean:	clean
 		@clear
 		@rm -f $(NAME)
 		@make fclean -C $(LIBFT_DIR)
+		@echo "\033[0;31m✔︎ Fcleaning Done\033[0m"
 
 re: fclean all
 

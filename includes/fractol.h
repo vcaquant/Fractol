@@ -52,8 +52,11 @@ typedef struct	s_img
 typedef struct	s_env
 {
 	void	*mlx;
+	void 	*win_b;
 	void	*win;
 	void	*s_win;
+
+	int		menu;
 
 	double	x1;
 	double	x2;
@@ -80,6 +83,8 @@ int				ft_init_struct(t_env **env);
 
 void			too_much_help(t_env *env);
 int				aff_key(int keycode, t_env *env);
+int				key_menu(int keycode, t_env *env);
+void			prp_win(t_env *env);
 
 int				aff_help_exit(int keycode, t_env *env);
 void			write_command(t_env *env);
@@ -88,5 +93,7 @@ void			write_title2(t_env *env);
 void			aff_help(t_env *env);
 
 void 			Mandelbrot(t_env *env);
+void 			Julia(t_env *env);
+void 			draw_frct(t_env *env, int key);
 
 #endif

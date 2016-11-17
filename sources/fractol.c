@@ -90,7 +90,7 @@ void 	Julia(t_env *env)
 	int		x;
 	int		y;
 	int		i;
-	double		tmp;
+	double	tmp;
 
 	env->x1 = -1;
 	env->x2 = 1;
@@ -98,14 +98,13 @@ void 	Julia(t_env *env)
 	env->y2 = 1.2;
 	env->zoom = 100;
 	env->it_max = 150;
-	env->img_x = (x2 - x1) * zoom;
-	env->img_y = (y2 - y1) * zoom;
-
+	env->img_x = (env->x2 - env->x1) * env->zoom;
+	env->img_y = (env->y2 - env->y1) * env->zoom;
 	x = 0;
-	while (x < img_x)
+	while (x < env->img_x)
 	{
 		y = 0;
-		while (y < img_y)
+		while (y < env->img_y)
 		{
 			env->c_r = 0.285;
 			env->c_i = 0.01;
@@ -123,8 +122,34 @@ void 	Julia(t_env *env)
 				ft_pixel(env, x, y);
 			else
 				ft_pixel2(env, x, y);
+			y++;
 		}
+		x++;
 	}
+}
+
+void 	prp_win(t_env *env)
+{
+	env->win = mlx_new_window(env->mlx, W_X, W_Y, "Fract_ol");
+	env->img = malloc(sizeof(t_img));
+	env->img->ptr_img = mlx_new_image(env->mlx, 1200, 700);
+	env->img->bits_img = mlx_get_data_addr(env->img->ptr_img, &(env->img->bpp),
+			&(env->img->size_line), &(env->img->end));
+	mlx_hook(env->win, 2, 0, aff_key, env);
+}
+
+void 	draw_frct(t_env *env, int key)
+{
+	mlx_destroy_image(env->mlx, env->img->ptr_img);
+	env->img = malloc(sizeof(t_img));
+	env->img->ptr_img = mlx_new_image(env->mlx, 1200, 700);
+	env->img->bits_img = mlx_get_data_addr(env->img->ptr_img, &(env->img->bpp),
+			&(env->img->size_line), &(env->img->end));
+	if (key == 38)
+		Julia(env);
+	else
+		Mandelbrot(env);
+	mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 }
 
 int     main(void)
@@ -134,14 +159,8 @@ int     main(void)
     if (!ft_init_struct(&env))
 		return (-1);
     env->mlx = mlx_init();
-    env->win = mlx_new_window(env->mlx, W_X, W_Y, "Fract_ol");
-	env->img->ptr_img = mlx_new_image(env->mlx, W_X, W_Y);
-	env->img->bits_img = mlx_get_data_addr(env->img->ptr_img, &(env->img->bpp),
-			&(env->img->size_line), &(env->img->end));
-	Mandelbrot(env);
-	mlx_put_image_to_window(env->mlx, env->win,
-		env->img->ptr_img, 0, 0);
-    mlx_hook(env->win, 2, 0, aff_key, env);
+	env->win_b = mlx_new_window(env->mlx, W_X, W_Y, "MENU");
+	mlx_hook(env->win_b, 2, 0, key_menu, env);
 	mlx_loop(env->mlx);
 	return (0);
 }

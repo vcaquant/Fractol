@@ -19,7 +19,7 @@
 # define BLACK		0x000000
 # define WHI		0xFFFFFF
 # define AZUR		0x74D0F1
-# define AZUR_F		0x1E7FCB
+# define A_F		0x1E7FCB
 # define ABSINTHE	0x7FDD4C
 # define RED		0x00FF0000
 # define BRO		0x00996600
@@ -92,8 +92,14 @@ void			write_title1(t_env *env);
 void			write_title2(t_env *env);
 void			aff_help(t_env *env);
 
-void 			Mandelbrot(t_env *env);
-void 			Julia(t_env *env);
+void 			ft_mandelbrot(t_env *env);
+void 			ft_julia(t_env *env);
+
 void 			draw_frct(t_env *env, int key);
+void 			ft_pixel(t_env *env, int x, int y);
+void 			ft_pixel2(t_env *env, int x, int y);
+
+void   			chose_fractal(t_env *env, int keycode);
+void    		menu_enter(t_env *env);
 
 #endif

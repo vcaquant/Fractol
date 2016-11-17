@@ -27,6 +27,16 @@ void	too_much_help(t_env *env)
 	}
 }
 
+void	zoom(t_env *env, int keycode)
+{
+	//mlx_destroy_image(env->mlx, env->img->ptr_img);
+	if (keycode == 24)
+		env->zoom += 10;
+	else if (keycode == 27)
+		env->zoom -= 10;
+	draw_frct(env);
+}
+
 int		aff_key(int keycode, t_env *env)
 {
 	ft_putstr("touche : ");
@@ -40,7 +50,9 @@ int		aff_key(int keycode, t_env *env)
 		exit(EXIT_SUCCESS);
 	}
 	if (keycode == 38 || keycode == 46)
-		draw_frct(env, keycode);
+		draw_frct(env);
+	if (keycode == 24 || keycode == 27)
+		zoom(env, keycode);
 	return (0);
 }
 

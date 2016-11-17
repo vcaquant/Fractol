@@ -13,8 +13,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define W_X		1200
-# define W_Y		700
+# define W_X		800
+# define W_Y		500
 
 # define BLACK		0x000000
 # define WHI		0xFFFFFF
@@ -81,7 +81,7 @@ typedef struct	s_env
 
 int				ft_init_struct(t_env **env);
 void			prp_win(t_env *env);
-void			draw_frct(t_env *env, int key);
+void			draw_frct(t_env *env);
 
 void			too_much_help(t_env *env);
 int				aff_key(int keycode, t_env *env);

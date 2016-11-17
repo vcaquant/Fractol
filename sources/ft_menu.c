@@ -21,9 +21,9 @@ void	chose_fractal(t_env *env, int keycode)
 		if (env->menu == 3)
 			env->menu = 1;
 		if (env->menu == 1)
-			mlx_string_put(env->mlx, env->win_b, 550, 200, RED, "Julia");
+			mlx_string_put(env->mlx, env->win_b, 380, 100, RED, "Julia");
 		else if (env->menu == 2)
-			mlx_string_put(env->mlx, env->win_b, 550, 250, A_F, "Mandelbrot");
+			mlx_string_put(env->mlx, env->win_b, 380, 150, A_F, "Mandelbrot");
 	}
 	if (keycode == 125)
 	{
@@ -31,9 +31,9 @@ void	chose_fractal(t_env *env, int keycode)
 		if (env->menu == 0)
 			env->menu = 2;
 		if (env->menu == 1)
-			mlx_string_put(env->mlx, env->win_b, 550, 200, RED, "Julia");
+			mlx_string_put(env->mlx, env->win_b, 380, 100, RED, "Julia");
 		else if (env->menu == 2)
-			mlx_string_put(env->mlx, env->win_b, 550, 250, A_F, "Mandelbrot");
+			mlx_string_put(env->mlx, env->win_b, 380, 150, A_F, "Mandelbrot");
 	}
 }
 

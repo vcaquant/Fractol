@@ -72,6 +72,7 @@ typedef struct	s_env
 
 	int		zoom;
 	int		it_max;
+	int		it_sup;
 
 	t_img	*img;
 	double	r;

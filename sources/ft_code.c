@@ -29,11 +29,19 @@ void	too_much_help(t_env *env)
 
 void	zoom(t_env *env, int keycode)
 {
-	//mlx_destroy_image(env->mlx, env->img->ptr_img);
 	if (keycode == 24)
 		env->zoom += 10;
 	else if (keycode == 27)
 		env->zoom -= 10;
+	draw_frct(env);
+}
+
+void	var_it(t_env *env, int keycode)
+{
+	if (keycode == 40)
+		env->it_max += 5;
+	else if (keycode == 46)
+		env->it_max -= 5;
 	draw_frct(env);
 }
 
@@ -53,6 +61,8 @@ int		aff_key(int keycode, t_env *env)
 		draw_frct(env);
 	if (keycode == 24 || keycode == 27)
 		zoom(env, keycode);
+	if (keycode == 40 || keycode == 46)
+		var_it(env, keycode);
 	return (0);
 }
 

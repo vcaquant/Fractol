@@ -20,6 +20,7 @@ int		ft_init_struct(t_env **env)
 	if (!((*env)->img = (t_img*)malloc(sizeof(t_img))))
 		return (0);
 	(*env)->zoom = 200;
+	(*env)->it_max = 50;
 	return (1);
 }
 

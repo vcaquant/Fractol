@@ -33,17 +33,17 @@ void	ft_julia(t_env *env)
 		y = 0;
 		while (y < env->img_y)
 		{
-			env->c_r = 0.285;
-			env->c_i = 0.01;
-			env->z_r = x / env->zoom + env->x1;
-			env->z_i = y / env->zoom + env->y1;
+			env->cr = 0.285;
+			env->ci = 0.01;
+			env->zr = x / env->zoom + env->x1;
+			env->zi = y / env->zoom + env->y1;
 			i = 0;
-			while ((env->z_r * env->z_r + env->z_i * env->z_i) < 4 &&
+			while ((env->zr * env->zr + env->zi * env->zi) < 4 &&
 					i < env->it_max)
 			{
-				tmp = env->z_r;
-				env->z_r = env->z_r * env->z_r - env->z_i * env->z_i + env->c_r;
-				env->z_i = 2 * env->z_i * tmp + env->c_i;
+				tmp = env->zr;
+				env->zr = env->zr * env->zr - env->zi * env->zi + env->cr;
+				env->zi = 2 * env->zi * tmp + env->ci;
 				i++;
 			}
 			if (i == env->it_max)
@@ -77,17 +77,17 @@ void	ft_mandelbrot(t_env *env)
 		y = 0;
 		while (y < env->img_y)
 		{
-			env->c_r = x / env->zoom + env->x1;
-			env->c_i = y / env->zoom + env->y1;
-			env->z_r = 0;
-			env->z_i = 0;
+			env->cr = 1.5 * (x - env->img_x / 2) / (0.5 * env->zoom * env->img_x) + (env->x1 / env->img_x / 1.37) - 0.5;
+			env->ci = (y - env->img_y / 2) / (0.5 * env->zoom * env->img_y) + (env->y1 / env->img_y / 1.92);
+			env->zr = 0;
+			env->zi = 0;
 			i = 0;
-			while ((env->z_r * env->z_r + env->z_i * env->z_i) < 4 &&
+			while ((env->zr * env->zr + env->zi * env->zi) < 4 &&
 					i < env->it_max)
 			{
-				tmp = env->z_r;
-				env->z_r = env->z_r * env->z_r - env->z_i * env->z_i + env->c_r;
-				env->z_i = 2 * env->z_i * tmp + env->c_i;
+				tmp = env->zr;
+				env->zr = env->zr * env->zr - env->zi * env->zi + env->cr;
+				env->zi = 2 * env->zi * tmp + env->ci;
 				i++;
 			}
 			if (i == env->it_max)

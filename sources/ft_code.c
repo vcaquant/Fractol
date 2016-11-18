@@ -68,12 +68,22 @@ int		aff_key(int keycode, t_env *env)
 
 int		key_menu(int keycode, t_env *env)
 {
+	ft_putstr("touche : ");
+	ft_putnbr(keycode);
+	ft_putchar('\n');
 	if (keycode == 12 || keycode == 53)
 	{
 		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
 		exit(EXIT_SUCCESS);
 	}
 	if (keycode >= 123 && keycode <= 126)
+	/*{
+		mlx_destroy_window(env->mlx, env->win_b);
+		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
+		prp_win(env);
+		ft_mandelbrot(env);
+		mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
+	}*/
 		chose_fractal(env, keycode);
 	if (keycode == 36)
 		menu_enter(env);

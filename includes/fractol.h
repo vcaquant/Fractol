@@ -97,8 +97,12 @@ void			aff_help(t_env *env);
 void			ft_mandelbrot(t_env *env);
 void			ft_julia(t_env *env);
 
+int				ft_chose_color(t_env *env);
 void			ft_pixel(t_env *env, int x, int y);
 void			ft_pixel2(t_env *env, int x, int y);
+void			ft_pixel3(t_env *env, int x, int y);
+void			ft_pixel4(t_env *env, int x, int y);
+void			ft_pixel5(t_env *env, int x, int y);
 
 void			chose_fractal(t_env *env, int keycode);
 void			menu_enter(t_env *env);

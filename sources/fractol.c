@@ -41,7 +41,7 @@ void	draw_frct(t_env *env)
 	env->img->ptr_img = mlx_new_image(env->mlx, 1200, 700);
 	env->img->bits_img = mlx_get_data_addr(env->img->ptr_img, &(env->img->bpp),
 			&(env->img->size_line), &(env->img->end));
-	ft_mandelbrot(env);
+	ft_julia(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 }
 

@@ -44,7 +44,8 @@ void	menu_enter(t_env *env)
 		mlx_destroy_window(env->mlx, env->win_b);
 		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
 		prp_win(env);
-		ft_julia(env);
+		ft_newton(env);
+		//ft_julia(env);
 		mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 	}
 	else if (env->menu == 2)

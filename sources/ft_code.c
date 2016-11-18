@@ -38,10 +38,20 @@ void	zoom(t_env *env, int keycode)
 
 void	var_it(t_env *env, int keycode)
 {
-	if (keycode == 40)
-		env->it_max += 2.5;
-	else if (keycode == 46)
-		env->it_max -= 2.5;
+	if (env->menu == 1)
+	{
+		if (keycode == 40)
+			env->it_max += 2.5;
+		else if (keycode == 46)
+			env->it_max -= 2.5;
+	}
+	else
+	{
+		if (keycode == 40)
+			env->it_max += 2;
+		else if (keycode == 46)
+			env->it_max -= 2;
+	}
 	draw_frct(env);
 }
 
@@ -73,22 +83,22 @@ void 	var_z(t_env *env, int key)
 {
 	if (key == 17)
 	{
-		env->zr += 0.1;
+		env->var_zr += 0.1;
 		draw_frct(env);
 	}
 	if (key == 5)
 	{
-		env->zr -= 0.1;
+		env->var_zr -= 0.1;
 		draw_frct(env);
 	}
 	if (key == 3)
 	{
-		env->zi += 0.1;
+		env->var_zi += 0.1;
 		draw_frct(env);
 	}
 	if (key == 38)
 	{
-		env->zi -= 0.1;
+		env->var_zi -= 0.1;
 		draw_frct(env);
 	}
 }
@@ -115,6 +125,8 @@ int		aff_key(int keycode, t_env *env)
 	{
 		if (env->menu == 1)
 			var_c(env, keycode);
+		else
+			var_z(env, keycode);
 	}
 	return (0);
 }

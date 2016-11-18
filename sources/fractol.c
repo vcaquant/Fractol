@@ -33,8 +33,6 @@ void	prp_win(t_env *env)
 			&(env->img->size_line), &(env->img->end));
 	env->cr = 0.285;
 	env->ci = 0.01;
-	env->zr = 0;
-	env->zi = 0;
 	mlx_hook(env->win, 2, 0, aff_key, env);
 }
 
@@ -45,10 +43,11 @@ void	draw_frct(t_env *env)
 	env->img->ptr_img = mlx_new_image(env->mlx, 800, 650);
 	env->img->bits_img = mlx_get_data_addr(env->img->ptr_img, &(env->img->bpp),
 			&(env->img->size_line), &(env->img->end));
-	if (env->menu == 1)
+	ft_newton(env);
+	/*if (env->menu == 1)
 		ft_julia(env);
 	else
-		ft_mandelbrot(env);
+		ft_mandelbrot(env);*/
 	mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 }
 

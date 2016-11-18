@@ -40,8 +40,8 @@ void	ft_julia(t_env *env)
 	env->x2 = 1;
 	env->y1 = -1.2;
 	env->y2 = 1.2;
-    env->img_x = 600;
-    env->img_y = 600;
+    env->img_x = 800;
+    env->img_y = 650;
 
 	//env->img_x = (env->x2 - env->x1) * env->zoom;
 	//env->img_y = (env->y2 - env->y1) * env->zoom;

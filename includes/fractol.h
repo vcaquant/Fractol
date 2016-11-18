@@ -70,6 +70,9 @@ typedef struct	s_env
 	double	zr;
 	double	zi;
 
+	double	var_zr;
+	double	var_zi;
+
 	int		zoom;
 	double	it_max;
 	double	it_sup;
@@ -102,6 +105,8 @@ int     		findmandelbrot(t_env *env);
 
 void			ft_julia(t_env *env);
 int     		findjulia(t_env *env);
+
+void 			ft_newton(t_env *env);
 
 int				ft_chose_color(t_env *env);
 void			ft_pixel(t_env *env, int x, int y);

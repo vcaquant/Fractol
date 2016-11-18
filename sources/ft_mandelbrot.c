@@ -18,6 +18,8 @@ int		findmandelbrot(t_env *env)
 	int		i;
 
 	i = 0;
+	env->zr = 0 + env->var_zr;
+	env->zi = 0 + env->var_zi;
 	while ((env->zr * env->zr + env->zi * env->zi) < 4 &&
 			i < env->it_max)
 	{
@@ -40,11 +42,10 @@ void	ft_mandelbrot(t_env *env)
 	env->x2 = 0.6;
 	env->y1 = -1.2;
 	env->y2 = 1.2;
-	i = env->it_max / 2.5;
+	i = env->it_max / 2;
 	env->it_sup = env->it_max - i;
     env->img_x = 800;
     env->img_y = 650;
-
 	//env->img_x = (env->x2 - env->x1) * env->zoom;
 	//env->img_y = (env->y2 - env->y1) * env->zoom;
 	y = 0;
@@ -53,8 +54,6 @@ void	ft_mandelbrot(t_env *env)
 		x = 0;
 		while (x < env->img_x)
 		{
-            env->zr = 0;
-            env->zi = 0;
 			env->cr = maptoreal(x, env->img_x, env->x1, env->x2);
 			env->ci = maptoimaginary(y, env->img_y, env->y1, env->y2);
 			n = findmandelbrot(env);

@@ -14,6 +14,8 @@ NAME = 			fractol
 
 SRC = 			sources/fractol.c \
 				sources/fractal.c \
+				sources/ft_mandelbrot.c \
+				sources/ft_julia.c \
 				sources/ft_put_pixel.c \
 				sources/ft_code.c \
 				sources/ft_help.c \
@@ -21,6 +23,8 @@ SRC = 			sources/fractol.c \
 
 OBJ = 			fractol.o \
 				fractal.o \
+				ft_mandelbrot.o \
+				ft_julia.o \
 				ft_put_pixel.o \
 				ft_code.o \
 				ft_help.o \

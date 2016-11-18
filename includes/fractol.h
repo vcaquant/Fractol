@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # define W_X		800
-# define W_Y		500
+# define W_Y		650
 
 # define BLACK		0x000000
 # define WHI		0xFFFFFF
@@ -71,8 +71,8 @@ typedef struct	s_env
 	double	zi;
 
 	int		zoom;
-	int		it_max;
-	int		it_sup;
+	double	it_max;
+	double	it_sup;
 
 	t_img	*img;
 	double	r;
@@ -94,8 +94,14 @@ void			write_title1(t_env *env);
 void			write_title2(t_env *env);
 void			aff_help(t_env *env);
 
+double  		maptoimaginary(int y, int img_y, double mini, double maxi);
+double  		maptoreal(int x, int img_x, double minr, double maxr);
+
 void			ft_mandelbrot(t_env *env);
+int     		findmandelbrot(t_env *env);
+
 void			ft_julia(t_env *env);
+int     		findjulia(t_env *env);
 
 int				ft_chose_color(t_env *env);
 void			ft_pixel(t_env *env, int x, int y);

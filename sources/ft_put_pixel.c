@@ -14,26 +14,25 @@
 
 int		ft_chose_color(t_env *env)
 {
-	/*if (env->r == 255)
+	if (env->r == 255)
 	{
-		env->r -= 255;
-		env->g -= 255;
-		env->b -= 255;
-	}*/
-	env->r += 20;
-	env->g += 20;
-	env->b += 20;
-	return (1);
-}
-
-void	ft_pixel2(t_env *env, int x, int y)
-{
-	if (x > 0 && x < W_X && y > 0 && y < W_Y)
-	{
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = 185;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = 128;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = 41;
+		env->r = 0;
+		env->g = 0;
+		env->b = 255;
 	}
+	else if (env->g == 255)
+	{
+		env->r = 255;
+		env->g = 0;
+		env->b = 0;
+	}
+	else if (env->b == 255)
+	{
+		env->r = 0;
+		env->g = 255;
+		env->b = 0;
+	}
+	return (1);
 }
 
 void	ft_pixel(t_env *env, int x, int y)
@@ -43,35 +42,5 @@ void	ft_pixel(t_env *env, int x, int y)
 		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = env->b;
 		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = env->g;
 		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = env->r;
-	}
-}
-
-void	ft_pixel3(t_env *env, int x, int y)
-{
-	if (x > 0 && x < W_X && y > 0 && y < W_Y)
-	{
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = 200;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = 200;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = 200;
-	}
-}
-
-void	ft_pixel4(t_env *env, int x, int y)
-{
-	if (x > 0 && x < W_X && y > 0 && y < W_Y)
-	{
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = 220;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = 220;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = 220;
-	}
-}
-
-void	ft_pixel5(t_env *env, int x, int y)
-{
-	if (x > 0 && x < W_X && y > 0 && y < W_Y)
-	{
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y))] = 255;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = 255;
-		env->img->bits_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = 255;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vcaquant <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 15:51:51 by vcaquant          #+#    #+#             */
-/*   Updated: 2016/11/18 15:52:07 by vcaquant         ###   ########.fr       */
+/*   Updated: 2016/11/19 17:53:42 by vcaquant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,45 +43,17 @@ void	ft_mandelbrot(t_env *env)
 	env->y1 = -1.2;
 	env->y2 = 1.2;
 	i = env->it_max / 2;
-	env->it_sup = env->it_max - i;
-    env->img_x = 800;
-    env->img_y = 650;
-	//env->img_x = (env->x2 - env->x1) * env->zoom;
-	//env->img_y = (env->y2 - env->y1) * env->zoom;
 	y = 0;
-	while (y < env->img_y)
+	while (y < W_Y)
 	{
 		x = 0;
-		while (x < env->img_x)
+		while (x < W_X)
 		{
-			env->cr = maptoreal(x, env->img_x, env->x1, env->x2);
-			env->ci = maptoimaginary(y, env->img_y, env->y1, env->y2);
+			env->cr = maptoreal(x, W_X, env->x1, env->x2);
+			env->ci = maptoimaginary(y, W_Y, env->y1, env->y2);
 			n = findmandelbrot(env);
-			if (n == env->it_max)
-			{
-				env->r = 255;
-				env->g = 255;
-				env->b = 255;
-				ft_pixel(env, x, y);
-			}
-			if (n == env->it_max - i)
-			{
-                env->r = 255;
-				//env->r = 241;
-				env->g = 0;
-				env->b = 0;
-                //ft_chose_color(env);
-				ft_pixel(env, x, y);
-			}
-            else if (n == env->it_max - (i + 1))
-			{
-                env->b = 255;
-				env->r = 0;
-				//env->g = 196;
-				env->g = 0;
-                //ft_chose_color(env);
-				ft_pixel(env, x, y);
-			}
+			ft_get_color(env, n, env->it_max);
+			ft_pixel(env, x, y);
 			x++;
 		}
 		y++;

@@ -43,7 +43,7 @@
 typedef struct	s_img
 {
 	void		*ptr_img;
-	char		*bits_img;
+	char		*bts_img;
 	int			size_line;
 	int			bpp;
 	int			end;
@@ -81,6 +81,16 @@ typedef struct	s_env
 	double	r;
 	double	g;
 	double	b;
+
+	int		rand;
+	int		red;
+	int		green;
+	int		blue;
+	int		modul_r;
+	int		modul_g;
+	int		modul_b;
+
+	int		move;
 }				t_env;
 
 int				ft_init_struct(t_env **env);
@@ -108,14 +118,15 @@ int     		findjulia(t_env *env);
 
 void 			ft_newton(t_env *env);
 
-int				ft_chose_color(t_env *env);
+void			ft_chose_color(t_env *env, int key);
 void			ft_pixel(t_env *env, int x, int y);
-void			ft_pixel2(t_env *env, int x, int y);
-void			ft_pixel3(t_env *env, int x, int y);
-void			ft_pixel4(t_env *env, int x, int y);
-void			ft_pixel5(t_env *env, int x, int y);
+void			ft_get_color(t_env *env, double z1, double z2);
 
 void			chose_fractal(t_env *env, int keycode);
 void			menu_enter(t_env *env);
+
+void			var_z(t_env *env, int keycode);
+void			var_c(t_env *env, int keycode);
+void			var_it(t_env *env, int keycode);
 
 #endif

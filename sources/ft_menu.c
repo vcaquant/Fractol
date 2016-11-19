@@ -15,25 +15,29 @@
 void	chose_fractal(t_env *env, int keycode)
 {
 	mlx_clear_window(env->mlx, env->win_b);
-	if (keycode == 126)
+	if (keycode == 125)
 	{
 		env->menu++;
-		if (env->menu == 3)
+		if (env->menu >= 4)
 			env->menu = 1;
 		if (env->menu == 1)
 			mlx_string_put(env->mlx, env->win_b, 380, 100, RED, "Julia");
 		else if (env->menu == 2)
 			mlx_string_put(env->mlx, env->win_b, 380, 150, A_F, "Mandelbrot");
+		else if (env->menu == 3)
+			mlx_string_put(env->mlx, env->win_b, 380, 200, ABSINTHE, "Newton");
 	}
-	if (keycode == 125)
+	if (keycode == 126)
 	{
 		env->menu--;
-		if (env->menu == 0)
-			env->menu = 2;
+		if (env->menu <= 0)
+			env->menu = 3;
 		if (env->menu == 1)
 			mlx_string_put(env->mlx, env->win_b, 380, 100, RED, "Julia");
 		else if (env->menu == 2)
 			mlx_string_put(env->mlx, env->win_b, 380, 150, A_F, "Mandelbrot");
+		else if (env->menu == 3)
+			mlx_string_put(env->mlx, env->win_b, 380, 200, ABSINTHE, "Newton");
 	}
 }
 
@@ -44,8 +48,7 @@ void	menu_enter(t_env *env)
 		mlx_destroy_window(env->mlx, env->win_b);
 		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
 		prp_win(env);
-		ft_newton(env);
-		//ft_julia(env);
+		ft_julia(env);
 		mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 	}
 	else if (env->menu == 2)
@@ -54,6 +57,14 @@ void	menu_enter(t_env *env)
 		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
 		prp_win(env);
 		ft_mandelbrot(env);
+		mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
+	}
+	else if (env->menu == 3)
+	{
+		mlx_destroy_window(env->mlx, env->win_b);
+		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
+		prp_win(env);
+		ft_newton(env);
 		mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 	}
 }

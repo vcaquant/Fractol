@@ -25,7 +25,7 @@ void	chose_fractal(t_env *env, int keycode)
 		else if (env->menu == 2)
 			mlx_string_put(env->mlx, env->win_b, 380, 150, A_F, "Mandelbrot");
 		else if (env->menu == 3)
-			mlx_string_put(env->mlx, env->win_b, 380, 200, ABSINTHE, "Newton");
+			mlx_string_put(env->mlx, env->win_b, 380, 200, ABS, "Burning ship");
 	}
 	if (keycode == 126)
 	{
@@ -37,7 +37,7 @@ void	chose_fractal(t_env *env, int keycode)
 		else if (env->menu == 2)
 			mlx_string_put(env->mlx, env->win_b, 380, 150, A_F, "Mandelbrot");
 		else if (env->menu == 3)
-			mlx_string_put(env->mlx, env->win_b, 380, 200, ABSINTHE, "Newton");
+			mlx_string_put(env->mlx, env->win_b, 380, 200, ABS, "Burning ship");
 	}
 }
 
@@ -64,7 +64,7 @@ void	menu_enter(t_env *env)
 		mlx_destroy_window(env->mlx, env->win_b);
 		ft_putstr("\033[0;32m✔︎ Menu Closed\033[0m\n");
 		prp_win(env);
-		ft_newton(env);
+		ft_burningship(env);
 		mlx_put_image_to_window(env->mlx, env->win, env->img->ptr_img, 0, 0);
 	}
 }

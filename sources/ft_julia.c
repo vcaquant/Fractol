@@ -18,7 +18,7 @@ int		findjulia(t_env *env)
 	int		i;
 
 	i = 0;
-	while ((env->zr * env->zr + env->zi * env->zi) < 4 &&
+	while ((env->zr * env->zr + env->zi * env->zi) <= 4 &&
 			i < env->it_max)
 	{
 		tmp = env->zr * env->zr - env->zi * env->zi + env->cr;
@@ -47,8 +47,8 @@ void	ft_julia(t_env *env)
 		x = 0;
 		while (x < W_X)
 		{
-			env->zr = maptoreal(x, W_X, env->x1, env->x2);
-			env->zi = maptoimaginary(y, W_Y, env->y1, env->y2);
+			env->zr = maptoreal(env, x);
+			env->zi = maptoimaginary(env, y);
 			n = findjulia(env);
 			ft_get_color(env, n, env->it_max);
 			ft_pixel(env, x, y);

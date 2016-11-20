@@ -12,18 +12,18 @@
 
 #include "../includes/fractol.h"
 
-double	maptoreal(int x, int img_x, double minr, double maxr)
+double	maptoreal(t_env *env, int x)
 {
 	double	range;
 
-	range = maxr - minr;
-	return (x * (range / img_x) + minr);
+	range = ((4 * (float)x / W_X - 2) / env->zoom) + ((env->x / W_X));
+	return (range);
 }
 
-double	maptoimaginary(int y, int img_y, double mini, double maxi)
+double	maptoimaginary(t_env *env, int y)
 {
 	double	range;
 
-	range = maxi - mini;
-	return (y * (range / img_y) + mini);
+	range = ((-4 * (float)y / W_Y + 2) / env->zoom) + ((env->y / W_Y));
+	return (range);
 }

@@ -39,7 +39,7 @@ void	ft_newton(t_env *env)
 			x = env->x1 + i * env->img_x;
 			y = env->y1 + i * env->img_y;
 			count = 0;
-			while (count < env->it_max)
+			while (count < env->it_max || (3.0 * ((xx - yy) * (xx - yy) + 4.0 * xx * yy)) < 4)
 			{
 				xx = x * x;
 				yy = y * y;

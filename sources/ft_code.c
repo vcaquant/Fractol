@@ -6,7 +6,7 @@
 /*   By: vcaquant <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 18:20:51 by vcaquant          #+#    #+#             */
-/*   Updated: 2016/11/19 17:50:33 by vcaquant         ###   ########.fr       */
+/*   Updated: 2016/11/19 22:47:57 by vcaquant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,7 @@ int		aff_key(int keycode, t_env *env)
 	}
 	if (keycode == 24 || keycode == 27)
 		var_it(env, keycode);
-	if (keycode == 17 || keycode == 5 || keycode == 3 || keycode == 38)
-	{
-		if (env->menu == 1)
-			var_c(env, keycode);
-		else
-			var_z(env, keycode);
-	}
-	if (keycode == 15 || keycode == 9 || keycode == 11)
+	if (keycode == 15 || keycode == 5 || keycode == 11)
 		ft_chose_color(env, keycode);
 	if (keycode == 46)
 	{
@@ -65,6 +58,29 @@ int		aff_key(int keycode, t_env *env)
 			env->move++;
 		else
 			env->move--;
+	}
+	return (0);
+}
+
+int		mouse_move(int x, int y, t_env *env)
+{
+	if (env->move == 1)
+	{
+		if (env->menu == 1)
+		{
+			x -= W_X / 2;
+			y -= W_Y / 2;
+			env->cr = ((float)x / W_X) * 2;
+			env->ci = ((float)y / W_Y) * 2;
+		}
+		else if (env->menu == 2 || env->menu == 3)
+		{
+			x -= W_X / 2;
+			y -= W_Y / 2;
+			env->var_zr = ((float)x / W_X) * 2;
+			env->var_zi = ((float)y / W_Y) * 2;
+		}
+		draw_frct(env);
 	}
 	return (0);
 }

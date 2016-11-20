@@ -19,7 +19,7 @@ void	ft_chose_color(t_env *env, int key)
 		if (env->modul_r > 5)
 			env->modul_r -= 5;
 	}
-	else if (key == 9)
+	else if (key == 5)
 	{
 		if (env->modul_g > 5)
 			env->modul_g -= 5;

@@ -18,12 +18,15 @@ float	ft_fabs(float f)
 	return (f);
 }
 
-int		findburningship(t_env *env)
+int		findburningship(t_env *env, int x, int y)
 {
 	double	tmp;
 	int		i;
 
 	i = 0;
+	env->cr = 1.5 * (x - W_X / 2) / (0.5 * env->zoom * W_X)
+		+ (env->x / W_X / 1.32) - 0.5;
+	env->ci = (y - W_Y / 2) / (0.5 * env->zoom * W_Y) - (env->y / W_Y / 1.97);
 	env->zr = 0 + env->var_zr;
 	env->zi = 0 + env->var_zi;
 	while (env->zr * env->zr * env->zi * env->zi <= 4 && i < env->it_max)
@@ -42,6 +45,7 @@ void	ft_burningship(t_env *env)
 	int		y;
 	int		n;
 	int		i;
+	int		color;
 
 	env->x1 = -2;
 	env->x2 = 1.2;
@@ -56,9 +60,10 @@ void	ft_burningship(t_env *env)
 		{
 			env->cr = maptoreal(env, x);
 			env->ci = maptoimaginary(env, y);
-			n = findburningship(env);
-			ft_get_color(env, n, env->it_max);
-			ft_pixel(env, x, y);
+			n = findburningship(env, x, y);
+			color = ((255 - n * env->r) << 16) + ((255 - i * env->g) << 8) + (255 - i * env->b);
+			//ft_get_color(env, n, env->it_max);
+			ft_pixel(env, x, y, color);
 			x++;
 		}
 		y++;

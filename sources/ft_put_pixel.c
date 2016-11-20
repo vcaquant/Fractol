@@ -53,12 +53,24 @@ void	ft_get_color(t_env *env, double z1, double z2)
 	env->b = ((z + env->rand + env->blue) % env->modul_b);
 }
 
-void	ft_pixel(t_env *env, int x, int y)
+void	ft_pixel(t_env *env, int x, int y, int color)
 {
-	if (x > 0 && x < W_X && y > 0 && y < W_Y)
+	int		r;
+	int		g;
+	int		b;
+	/*if (x > 0 && x < W_X && y > 0 && y < W_Y)
 	{
 		env->img->bts_img[(4 * (x + env->img->size_line / 4 * y))] = env->b;
 		env->img->bts_img[(4 * (x + env->img->size_line / 4 * y)) + 1] = env->g;
 		env->img->bts_img[(4 * (x + env->img->size_line / 4 * y)) + 2] = env->r;
+	}*/
+	r = (color & 0xFF0000) >> 16;
+	g = (color & 0xFF00) >> 8;
+	b = (color & 0xFF);
+	if (y >= 0 && x >= 0 && y < W_Y && x < W_X)
+	{
+		env->img->bts_img[(y * env->img->size_line) + ((env->img->bpp / 8) * x) + 2] = r;
+		env->img->bts_img[(y * env->img->size_line) + ((env->img->bpp / 8) * x) + 1] = g;
+		env->img->bts_img[(y * env->img->size_line) + ((env->img->bpp / 8) * x)] = b;
 	}
 }

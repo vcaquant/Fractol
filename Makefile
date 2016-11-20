@@ -6,7 +6,7 @@
 #    By: vcaquant <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/15 16:05:38 by vcaquant          #+#    #+#              #
-#    Updated: 2016/11/15 16:05:40 by vcaquant         ###   ########.fr        #
+#    Updated: 2016/11/20 17:31:55 by vcaquant         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ SRC = 			sources/fractol.c \
 				sources/fractal.c \
 				sources/ft_mandelbrot.c \
 				sources/ft_julia.c \
-				sources/ft_newton.c \
 				sources/ft_burningship.c \
 				sources/ft_put_pixel.c \
 				sources/ft_code.c \
@@ -28,7 +27,6 @@ OBJ = 			fractol.o \
 				fractal.o \
 				ft_mandelbrot.o \
 				ft_julia.o \
-				ft_newton.o \
 				ft_burningship.o \
 				ft_put_pixel.o \
 				ft_code.o \

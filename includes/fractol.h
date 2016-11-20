@@ -81,9 +81,9 @@ typedef struct	s_env
 	double	it_sup;
 
 	t_img	*img;
-	double	r;
-	double	g;
-	double	b;
+	int	r;
+	int	g;
+	int	b;
 
 	int		rand;
 	int		red;
@@ -120,12 +120,10 @@ int				findmandelbrot(t_env *env, int x, int y);
 void			ft_julia(t_env *env);
 int				findjulia(t_env *env);
 
-void			ft_newton(t_env *env);
-
 void			ft_burningship(t_env *env);
 
 void			ft_chose_color(t_env *env, int key);
-void			ft_pixel(t_env *env, int x, int y);
+void			ft_pixel(t_env *env, int x, int y, int color);
 void			ft_get_color(t_env *env, double z1, double z2);
 
 void			chose_fractal(t_env *env, int keycode);

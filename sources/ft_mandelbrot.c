@@ -38,8 +38,9 @@ void	ft_mandelbrot(t_env *env)
 {
 	int		x;
 	int		y;
-	double	n;
-	double	i;
+	int		n;
+	int		i;
+	int		color;
 
 	env->x1 = -2.1;
 	env->x2 = 0.6;
@@ -55,8 +56,9 @@ void	ft_mandelbrot(t_env *env)
 			env->cr = maptoreal(env, x);
 			env->ci = maptoimaginary(env, y);
 			n = findmandelbrot(env, x, y);
+			color = ((255 - n * env->r) << 16) + ((255 - i * env->g) << 8) + (255 - i * env->b);
 			ft_get_color(env, n, env->it_max);
-			ft_pixel(env, x, y);
+			ft_pixel(env, x, y, color);
 			x++;
 		}
 		y++;

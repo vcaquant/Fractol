@@ -35,6 +35,7 @@ void	ft_julia(t_env *env)
 	int		y;
 	int		n;
 	int		i;
+	int		color;
 
 	env->x1 = -1;
 	env->x2 = 1;
@@ -50,8 +51,9 @@ void	ft_julia(t_env *env)
 			env->zr = maptoreal(env, x);
 			env->zi = maptoimaginary(env, y);
 			n = findjulia(env);
-			ft_get_color(env, n, env->it_max);
-			ft_pixel(env, x, y);
+			color = ((255 - n * env->r) << 16) + ((255 - i * env->g) << 8) + (255 - i * env->b);
+			//ft_get_color(env, n, env->it_max);
+			ft_pixel(env, x, y, color);
 			x++;
 		}
 		y++;

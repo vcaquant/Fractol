@@ -6,7 +6,7 @@
 #    By: vcaquant <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 03:44:14 by vcaquant          #+#    #+#              #
-#    Updated: 2016/05/12 15:09:13 by vcaquant         ###   ########.fr        #
+#    Updated: 2016/11/21 12:17:37 by vcaquant         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ all: $(NAME)
 
 $(NAME):
 	@$(CC) $(CFLAGS) $(SRC) -I $(INC) 
-	@ar r $(NAME) $(OBJ_NAME)
+	@ar rc $(NAME) $(OBJ_NAME)
 	@ranlib $(NAME)
 
 clean:

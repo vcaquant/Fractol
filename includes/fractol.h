@@ -32,13 +32,7 @@
 # include "../minilibx_macos/mlx.h"
 # include "../minilibx_macos sierra/mlx.h"
 
-# include <math.h>
-# include <fcntl.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <sys/uio.h>
-# include <sys/types.h>
 
 typedef struct	s_img
 {
